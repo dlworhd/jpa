@@ -1,13 +1,19 @@
 package org.example.jpa.model.p1;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 public class Member {
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -45,11 +51,26 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 
+	@OneToMany(mappedBy = "member")
+	private List<Order> orders;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	public Team team;
 
 	public String name;
 	public int age;
+
+	@Embedded
+	private Address address;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void addOrder(Order order){
+		order.setMember(this);
+		this.orders.add(order);
+	}
 
 	@Override
 	public String toString() {

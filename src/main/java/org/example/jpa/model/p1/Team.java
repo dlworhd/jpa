@@ -5,12 +5,18 @@ import java.util.List;
 
 @Entity
 public class Team {
+	public Team() {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
+
+	public Team(String name) {
+		this.name = name;
+	}
 
 	@OneToMany(mappedBy = "team")
 	private List<Member> members;

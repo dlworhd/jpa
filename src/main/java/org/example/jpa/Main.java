@@ -1,5 +1,6 @@
 package org.example.jpa;
 
+import org.example.jpa.model.p1.Address;
 import org.example.jpa.model.p1.Member;
 import org.example.jpa.model.p1.Team;
 
@@ -33,12 +34,24 @@ public class Main {
 		 * 1차 쿼리에 team에 대한 정보를 저장하고 team을 가져와서 name을 반환함
 		 */
 
-		List<Member> members  = em.createQuery("SELECT m FROM Member m join m.team", Member.class).getResultList();
+//		for (long i = 1; i <= 100; i++) {
+//			Member member = new Member();
+//			member.setAge((int)(Math.random() * 100 + 1));
+//			member.setName("TEST" + i);
+//			member.setAddress(new Address(String.valueOf((long)(Math.random() * 99999 + 1)), "서울특별시 " + (long)(Math.random() * 999 + 1) +"번지", i + "번길"));
+//			em.persist(member);
+//		}
 
-		for (Member member : members) {
-			Team team = member.getTeam();
-			System.out.println(team.toString());
-		}
+//		for (int i = 1; i <= 10; i++) {
+//			Team team = new Team("Team" + (long)(Math.random() * 10 + 1));
+//			em.persist(team);
+//		}
+
+//		for (long i = 1; i <= 100 ; i++) {
+//			Member member = em.find(Member.class, i);
+//			Team team = em.find(Team.class, (long) (Math.random() * 10 + 1));
+//			member.setTeam(team);
+//		}
 
 		//------------------------------------------------------------------------------//
 		transaction.commit();
