@@ -4,10 +4,9 @@ import org.example.jpa.model.p1.*;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
-public class JPQL_EX {
+public class JPQL_BASIC {
 	public static void main(String[] args) {
 		// member.toString()할 때 team.name도 같이 출력되기 때문에, JOIN FETCH 사용
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 
 @Entity
+@NamedQuery(name = "Member.findByUsername", query = "SELECT m.name FROM Member m WHERE m.name = :username")
 public class Member {
 	public void setAddress(Address address) {
 		this.address = address;
@@ -51,8 +52,8 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 
-	@OneToMany(mappedBy = "member")
-	private List<Order> orders;
+//	@OneToMany(mappedBy = "member")
+//	private List<Order> orders;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	public Team team;
@@ -67,10 +68,10 @@ public class Member {
 		return address;
 	}
 
-	public void addOrder(Order order){
-		order.setMember(this);
-		this.orders.add(order);
-	}
+//	public void addOrder(Order order){
+//		order.setMember(this);
+//		this.orders.add(order);
+//	}
 
 	@Override
 	public String toString() {
